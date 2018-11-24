@@ -1,0 +1,35 @@
+//- Crowdie main page
+extends skel
+
+block head
+    script(src="/js/uikit.js")
+
+block body
+    main#crowdie.crowdie
+        div.window.uk-container-large.uk-position-center
+            h1.uk-heading-divider= "Crowdie"
+            ul(uk-tab uk-switcher)
+                li.uk-active
+                    a(href="#crowproj")= "My Projects"
+                li
+                    a(href="#crowfund")= "My Fundings"
+            div.uk-switcher
+                div#crowproj
+                    ul.uk-subnav
+                        li
+                            a(href="#")= "New Project"
+                        li
+                            a(href="#")= "My Wallet"
+
+                    ul(uk-accordion)
+                        div.uk-text-center.uk-placeholder
+                            | Currently you don't have any funding projects!
+                div#crowfund
+                    div.uk-grid-match(uk-grid)
+                        
+        div.window.uk-container-large.uk-position-center(style="display:none")
+            h1.uk-heading-divier= "Invest the project"
+                    
+
+    script(src="/js/background.js")
+    script(src="/js/music.js")

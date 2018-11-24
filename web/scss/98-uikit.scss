@@ -1,0 +1,22 @@
+// (c) Yuoa
+@import "uikit/variables-theme.scss";
+@import "uikit/mixins-theme.scss";
+
+$win-bg: #c0c0c0;
+
+.window {
+    background-color: $win-bg;
+    color: black;
+    
+    .uk-placeholder {
+        border: none;
+        margin: auto;
+    }
+
+    &.uk-container-large {
+        width: 600px;
+        height: 480px;
+    }
+}
+
+@import "uikit/uikit-theme.scss";

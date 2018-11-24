@@ -1,9 +1,9 @@
 {
-  "name": "vapor-crowd",
+  "name": "crowdie",
   "version": "1.0.0",
   "description": "Simple crowdfunding platform implementation",
   "main": "index.mjs",
-  "repository": "https://github.com/yuoa/VaporCrowd",
+  "repository": "https://github.com/yuoa/Crowdie",
   "author": "Yuoa <contact@yuoa.pm>",
   "license": "MPL-2.0",
   "private": false,
@@ -11,6 +11,10 @@
     "colors": "^1.3.2",
     "express": "^4.16.4",
     "moment": "^2.22.2",
-    "pug": "^2.0.3"
+    "node-sass-middleware": "^0.11.0",
+    "pug": "^2.0.3",
+    "socket.io": "^2.1.1",
+    "uikit": "^3.0.0-rc.24",
+    "web3": "^1.0.0-beta.36"
   }
 }

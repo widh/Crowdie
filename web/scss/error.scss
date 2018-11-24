@@ -1,0 +1,33 @@
+// (c) Yuoa
+@import 'common';
+
+main.bsod {
+    height: 100%;
+    width: 100%;
+    background-color: $bsod-bg;
+    color: white;
+    font-family: 'VT323', monospace;
+    text-align: center;
+    font-size: 28px;
+    display: table;
+    div#content {
+        display: table-cell;
+        vertical-align: middle;
+        div.container {
+            max-width: 800px;
+            margin: auto;
+            p {
+                text-align: left;
+            }
+            span.title {
+                color: $bsod-bg;
+                padding: 0 0.5em;
+                background-color: $bsod-fg;
+            }
+            span.blinking {
+                padding-left: 0.5em;
+                animation: blink 1s steps(2, start) infinite;
+            }
+        }
+    }
+}
