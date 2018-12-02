@@ -88,8 +88,12 @@ export const web = (log, e, w3, io, period) => {
             }).then(_ => {
                 c.methods.end().call().then(es => {
                     if (end === "true") {
+                        var now = 0;
                         c.methods.totalAmount().call().then(ta => {
-                            soc.emit("p update", [a[0], ["Success", ta]]);
+                            now = w3.utils.fromWei(ta);
+                        }).then(ga => {
+                            var target = now / w3.utils.fromWei(ga);
+                            soc.emit("p update", [a[0], ["Success", `${Math.floor(now / target * 100)}% Reached, ${target > now ? "All refunded." : "Check your account."}`]]);
                         }).catch(e => {
                             soc.emit("p update", [a[0], ["Failed", "Balance Lack"]]);
                             e.parse(0x1000, "Unknown error occured")(error);
@@ -160,9 +164,6 @@ export const web = (log, e, w3, io, period) => {
                         }).then(ga => {
                             o.target = w3.utils.fromWei(ga);
                             return c.methods.Investors(0).call();
-                        }).then(iv => {
-                            o.investors = iv;
-                            return c.methods.totalAmount().call();
                         }).then(ta => {
                             o.now = w3.utils.fromWei(ta);
                             return c.methods.owner().call();

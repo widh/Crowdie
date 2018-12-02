@@ -191,6 +191,7 @@ var Crdy = Crdy || {};
 
                     pOwner.classList.add("pl-manager");
                     div.appendChild(pOwner);
+                    div.appendChild(bGet);
                 }
 
                 li.appendChild(a);
