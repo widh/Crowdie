@@ -1,0 +1,18 @@
+//- Crowdie wallet window
+div#wallet.window.uk-position-center(style="display:none")
+    h1.uk-heading-divider
+        div.icon.wallet
+        | My Wallet
+    button.close.rl-rect.first
+        | &times;
+    div.container
+        div.content.built-in
+            table
+                thead
+                    tr
+                        td
+                        td= "Account Address"
+                        td= "Balance"
+                tbody#w-balances
+
+script(src="/js/window/wallet.js")

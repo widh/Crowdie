@@ -6,12 +6,14 @@ import path from "path";
 import * as socset from "./socset.mjs";
 import * as router from "./router.mjs";
 
-export default class Service {
+export class WebService {
 
-    constructor(log, e, port, w3) {
+    constructor(log, e, arg, w3) {
         this.log = log;
         this.e = e;
-        this.port = port;
+        this.port = Number(arg.port || 2367);
+        this.period = Number(arg.period || 604800);
+        this.dbPath = arg.dbPath;
         this.w3 = w3;
         this.dirname = path.dirname(new URL(import.meta.url).pathname);
     }
@@ -38,7 +40,7 @@ export default class Service {
         app.use("/musics", express.static(path.join(this.dirname, "musics")));
 
         // Bind paths
-        router.bind(this.log, this.e, app);
+        router.bind(this.log, this.e, app, this.dbPath);
 
         // Start web service
         const web = app.listen(this.port, () => {
@@ -47,7 +49,38 @@ export default class Service {
 
         // Bind websocket service
         const io = new socket(web);
-        socset.bind(this.log, this.e, this.w3, io);
+        socset.web(this.log, this.e, this.w3, io, this.period);
+    }
+
+};
+
+export class DBService {
+    
+    constructor(log, e, arg) {
+        this.log = log;
+        this.e = e;
+        this.port = Number(arg.port || 2368);
+    }
+
+    start() {
+        // Create express object
+        const app = this.app = express();
+        app.set("etag", "strong");
+        app.disable("x-powered-by");
+
+        // Bind simple response
+        app.use((i, o) => {
+            o.status(200).end("Crowide Data Service Status All GREEEEEN.");
+        });
+        
+        // Start web service
+        const web = app.listen(this.port, () => {
+            this.log.info(`DB service is successfully initialized on port ${this.port}.`);
+        });
+
+        // Bind websocket service
+        const io = new socket(web);
+        socset.db(this.log, this.e, io);
     }
 
 };

@@ -1,5 +1,20 @@
 // (c) Yuoa
-@import 'common';
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+$bsod-bg: #1c00b0;
+$bsod-fg: #a8a8a8;
+
+@keyframes blink {
+    from { visibility: visible; }
+    to { visibility: hidden; }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
 
 main.bsod {
     height: 100%;
@@ -10,20 +25,23 @@ main.bsod {
     text-align: center;
     font-size: 28px;
     display: table;
+
     div#content {
         display: table-cell;
         vertical-align: middle;
+
         div.container {
             max-width: 800px;
             margin: auto;
-            p {
-                text-align: left;
-            }
+
+            p { text-align: left; }
+
             span.title {
                 color: $bsod-bg;
                 padding: 0 0.5em;
                 background-color: $bsod-fg;
             }
+            
             span.blinking {
                 padding-left: 0.5em;
                 animation: blink 1s steps(2, start) infinite;

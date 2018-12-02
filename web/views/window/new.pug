@@ -1,0 +1,59 @@
+//- Crowdie new project window
+div#new.window.resizable.uk-container-large.uk-position-center(style="display:none")
+    h1.uk-heading-divider
+        div.icon.new
+        | Create a new ten-minutes crowdie project
+    div.container
+        div.content.dialog
+            div.icon
+                img(src="/images/icon/new.ico")
+                        
+            div.body
+                div.message
+                    | Type a project name and target value.
+                div.input-field
+                    div.label
+                        label(for="np-name")
+                            | Project&nbsp;
+                            u="N"
+                            | ame:
+                    div.input
+                        input(id="np-name" type="text" required)
+                div.input-field
+                    div.label
+                        label(for="np-value")
+                            | Target&nbsp;
+                            u="V"
+                            | alue (Ether):
+                    div.input
+                        input(id="np-value" type="number" required)
+                div.message
+                    | Exchange Rate is... 1 eth = 1,000,000,000,000,000,000 wei
+                div.input-field
+                    div.label
+                        label(for="np-desc")
+                            u="D"
+                            | escription:
+                    div.input.long
+                        textarea(id="np-desc")
+                div.input-field
+                    div.label
+                        label(for="np-address")
+                            u="A"
+                            | ddress:
+                    div.input.long
+                        select(id="np-address" required)
+                div.input-field
+                    div.label
+                        label(for="np-pwd")
+                            u="P"
+                            | assword:
+                    div.input
+                        input(id="np-pwd" type="password" required)
+
+            div.buttons
+                button#np-send(style="font-weight: 700")= "Register"
+                button.close= "Cancel"
+                span#np-state.status
+
+script(src="/js/window/new.js")

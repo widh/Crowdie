@@ -1,0 +1,31 @@
+//- Crowdie main window
+div#crowdie.window.resizable.uk-container-large
+    h1.uk-heading-divider
+        div.icon.briefcase
+        | Crowdie
+    div.container
+        ul.uk-subnav
+            li#btn-new
+                a(href="#")
+                    | <u>N</u>ew Project
+            li#btn-wallet
+                a(href="#")
+                    | My <u>W</u>allet   
+        hr
+        div.content
+            ul(uk-tab uk-switcher)
+                li
+                    a(href="#crow-my")= "My Projects"
+                li.uk-active
+                    a(href="#crow-all")= "All Ongoing Projects"
+            div.uk-switcher
+                div#crow-my
+                    ul(uk-accordion)
+                        div.uk-text-center.uk-placeholder
+                            | Loading...
+                div#crow-all
+                    ul(uk-accordion)
+                        div.uk-text-center.uk-placeholder
+                            | Loading...
+
+script(src="/js/window/crowdie.js")

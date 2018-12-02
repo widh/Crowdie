@@ -1,21 +1,361 @@
 // (c) Yuoa
+// Motivated & partially based on https://plaza.one
+
 @import "uikit/variables-theme.scss";
 @import "uikit/mixins-theme.scss";
 
-$win-bg: #c0c0c0;
+$wb-white: #ffffff;
+$wb-light: #dfdfdf;
+$wb-dark: #808080;
+$wb-black: #070707;
+$w-bg: #c0c0c0;
+$w-gradient: linear-gradient(90deg, navy, #1084d0);
+
+@mixin wb-inner {
+    border: 1px solid;
+    border-top-color: $wb-light;
+    border-left-color: $wb-light;
+    border-right-color: $wb-dark;
+    border-bottom-color: $wb-dark;
+}
+@mixin wb-outer {
+    border: 1px solid;
+    border-top-color: $wb-white;
+    border-left-color: $wb-white;
+    border-right-color: $wb-black;
+    border-bottom-color: $wb-black;
+}
+
+@mixin wb-r-inner {
+    border: 1px solid;
+    border-top-color: $wb-dark;
+    border-left-color: $wb-dark;
+    border-right-color: $wb-light;
+    border-bottom-color: $wb-light;
+}
+@mixin wb-r-outer {
+    border: 1px solid;
+    border-top-color: $wb-black;
+    border-left-color: $wb-black;
+    border-right-color: $wb-white;
+    border-bottom-color: $wb-white;
+}
 
 .window {
-    background-color: $win-bg;
+    @include wb-inner;
+    background-color: $w-bg;
     color: black;
-    
-    .uk-placeholder {
-        border: none;
-        margin: auto;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 0 0 black;
+
+    input, textarea, select, p, a, b, u, i, h1, h2, h3, div, span, button, option {
+        font-family: Tahoma, Verdana, sans-serif !important;
+        text-transform: none !important;
+        transition: unset !important;
+        font-size: 11px !important;
+    }
+
+    button {
+        @include wb-inner;
+        background-color: $w-bg;
+        margin: 0;
+        padding: 4px;
+        text-align: center;
+        box-shadow: 1px 1px 0 0 black;
+        display: block;
+        outline: none;
+        cursor: pointer;
+
+        &:active:enabled {
+            @include wb-r-inner;
+            box-shadow: inset 1px 1px 0 0 black;
+        }
+    }
+    button.rl-rect {
+        width: 15px;
+        height: 15px;
+        line-height: 0;
+        font-size: 9px;
+        top: 4px;
+        position: absolute;
+        float: right;
+        font-weight: 700;
+    }
+    button.rl-rect.first { right: 6px; }
+    button.rl-rect.second { right: 23px; }
+    button.rl-rect.third { right: 40px; }
+
+    hr {
+        border-top: 1px solid $wb-dark;
+        border-bottom: 1px solid $wb-white;
+        margin: 1px 2px;
+    }
+
+    & > h1 {
+        margin: 2px 2px 0;
+        padding: 2px;
+        background: $w-gradient;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: white;
+
+        .icon {
+            width: 16px;
+            height: 16px;
+            float: left;
+            margin-right: 2px;
+            background-size: cover;
+        }
     }
 
     &.uk-container-large {
         width: 600px;
-        height: 480px;
+        min-height: 179px;
+        min-height: fit-content;
+    }
+
+    &.uk-container-small {
+        min-width: 320px;
+
+        .content.dialog {
+            button {
+                width: 100px;
+                margin: auto;
+            }
+
+            .message { text-align: center; }
+        }
+    }
+    
+    .container {
+        cursor: default;
+
+        .uk-subnav {
+            margin: 0 2px;
+            line-height: 1;
+
+            li {
+                padding: 0;
+
+                a {
+                    cursor: pointer;
+                    padding: 5px 6px;
+                    text-decoration: none;
+                    color: black;
+
+                    &:hover {
+                        color: white;
+                        background-color: navy;
+                    }
+                }
+            }
+        }
+
+        .uk-placeholder {
+            border: none;
+            margin: auto;
+        }
+
+        .content {
+            margin: 9px;
+
+            table {
+                background-color: white;
+
+                thead { font-weight: 700; }
+                td { padding: 0 5px; }
+            }
+
+            .uk-tab {
+                padding: 0 2px;
+                margin: 0;
+                border-bottom: 1px solid white;
+
+                &::before {
+                    content: '';
+                    border-bottom: none;
+                }
+
+                li {
+                    background-color: $w-bg;
+                    border: 1px solid white;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    padding: 0;
+                    margin: 4px 0 0;
+                    transform: translate(0, 1px);
+
+                    a {
+                        color: black;
+                        border: 1px solid $wb-light;
+                        border-right-color: $wb-dark;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                        border-bottom: none;
+                        padding: 3px 5px;
+                        cursor: default;
+                        font-size: 11px;
+                        line-height: 1;
+                        margin: 0;
+                    }
+                 
+                    &.uk-active {
+                        transform: translate(0, 2px);
+                        border-bottom-width: 2px;
+                        border-bottom-color: $w-bg;
+                        margin: 0;
+
+                        a { padding: 3px 7px 7px; }
+                    }
+                    &.uk-active, &:last-child { border-right-color: black; }
+                }
+            }
+
+            .uk-switcher {
+                @include wb-outer;
+                border-top-color: $wb-light;
+
+                & > div {
+                    @include wb-inner;
+                    border-top: none;
+                    padding: 9px;
+
+                    .uk-accordion-title {
+                        font-weight: 700;
+                        text-decoration: underline;
+                    }
+
+                    .uk-accordion-content {
+                        .pl-info {
+                            margin-bottom: 5px;
+
+                            b:not(:first-child) {
+                                margin-left: 30px;
+                            }
+
+                            span {
+                                margin-left: 5px;
+                            }
+                        }
+
+                        .pl-last {
+                            display: inline-block;
+                        }
+
+                        .pl-owner, .pl-manager {
+                            margin: 10px 0;
+                        }
+                        .pl-owner::before {
+                            content: "Project by ";
+                        }
+                        .pl-manager::before {
+                            content: "Address: ";
+                        }
+
+                        button {
+                            float: right;
+                            width: 20%;
+                            max-width: 200px;
+                            margin: 5px 0;
+                            padding: 5px;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+
+            &.dialog {
+                button {
+                    width: 100%;
+                    margin: 5px 0;
+                    padding: 5px;
+                }
+
+                .icon, .body, .buttons {
+                    display: inline-block;
+                    vertical-align: top;
+                }
+
+                .icon, .buttons {
+                    width: 16.667%;
+                    text-align: center;
+                }
+
+                .body {
+                    width: 66.666%;
+
+                    .button { text-align: center; }
+
+                    .message {
+                        margin: 12px 0;
+                        &:first-child { margin-top: 0; }
+                        &:last-child { margin-bottom: 0; }
+                    }
+
+                    .input-field {
+                        .label, .input {
+                            display: inline-block;
+                        }
+
+                        .label {
+                            width: 30%;
+                            vertical-align: top;
+
+                            label {
+                                display: block;
+                                line-height: 21px;
+                                margin-bottom: 8px;
+                                margin-top: 3px;
+                            }
+                        }
+
+                        .input {
+                            @include wb-r-outer;
+                            width: 168px;
+                            margin: 3px;
+
+                            input, textarea, select {
+                                @include wb-r-inner;
+                                resize: none;
+                                color: black;
+                                padding: 3px;
+                                width: 160px;
+
+                                &:disabled { background-color: $w-bg; }
+                            }
+
+                            select {
+                                background-color: white;
+                                padding: 3px 23px 3px 3px;
+                                background: white url("/images/dropdown.png") no-repeat 100% 50%;        
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                            }
+
+                            &.long {
+                                overflow: visible;
+                                width: calc(70% - 8px);
+                                display: inline-grid;
+
+                                input, textarea {
+                                    width: calc(100% - 8px);
+                                }
+
+                                select { width: 100%; }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.built-in {
+                @include wb-r-outer;
+                
+                & > * { @include wb-r-inner; }
+            }
+        }
     }
 }
 

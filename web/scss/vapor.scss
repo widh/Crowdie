@@ -1,22 +1,30 @@
 // (c) Yuoa
-@import url('https://fonts.googleapis.com/css?family=VT323');
 
-@import 'common';
-@import 'main';
-@import 'error';
-
-@keyframes blink {
-    from {
-        visibility: visible;
-    }
-    to {
-        visibility: hidden;
-    }
-}
+@import '98-uikit';
 
 body {
     padding: 0;
     margin: 0;
     width: 100vw;
     height: 100vh;
+    background-color: #008080;
+}
+
+main.crowdie {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    .icon.briefcase { background-image: url("/images/icon/favicon.ico"); }
+    .icon.new { background-image: url("/images/icon/new.ico"); }
+    .icon.invest { background-image: url("/images/icon/invest.ico"); }
+    .icon.info { background-image: url("/images/icon/info.ico"); }
+    .icon.wallet { background-image: url("/images/icon/wallet.ico"); }
+
+    #new {
+        min-height: 305px;
+    }
 }

@@ -1,0 +1,44 @@
+//- Crowdie invest window
+div#invest.window.resizable.uk-container-large.uk-position-center(style="display:none")
+    h1.uk-heading-divider
+        div.icon.invest
+        | Invest to the project
+    div.container
+        div.content.dialog
+            div.icon
+                img(src="/images/icon/invest.ico")
+
+            div.body
+                div.message
+                    | How much do you want to invest to this project?
+                input(id="iv-proj" type="hidden")
+                div.input-field
+                    div.label
+                        label(for="iv-value")
+                            u="V"
+                            | alue (Ether):
+                    div.input
+                        input(id="iv-value" type="number" required)
+                div.message
+                    | Exchange Rate is... 1 eth = 1,000,000,000,000,000,000 wei
+                div.input-field
+                    div.label
+                        label(for="iv-address")
+                            u="A"
+                            | ddress:
+                    div.input.long
+                        select(id="iv-address" required)
+                div.input-field
+                    div.label
+                        label(for="iv-pwd")
+                            u="P"
+                            | assword:
+                    div.input
+                        input(id="iv-pwd" type="password" required)
+
+            div.buttons
+                button#iv-send(style="font-weight: 700")= "Invest"
+                button.close= "Cancel"
+                span#iv-state.status
+
+script(src="/js/window/invest.js")

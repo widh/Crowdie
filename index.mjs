@@ -1,12 +1,15 @@
 #!/usr/bin/env -S node --experimental-modules
 import {init, log, e, pkg, arg} from "./core/init.mjs";
-import serve from "./web";
+import {serve, data} from "./web";
 
 init.then(() => {
     switch (arg.fn.keyword) {
 
-        case "run":
+        case "web":
         return serve(arg, log, e);
+
+        case "db":
+        return data(arg, log, e);
 
     }
 })

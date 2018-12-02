@@ -1,35 +1,24 @@
 //- Crowdie main page
-extends skel
+extends layout
 
 block head
-    script(src="/js/uikit.js")
+    link(rel="stylesheet", href="/css/vapor.css")
+    script(src="/js/onload.js")
+    script(src="/js/socket.io.slim.js")
+    script(src="/js/uikit.min.js")
+    script(src="/js/interact.min.js")
+    script(src="/js/moment.js")
+    script= "var dbPath = '" + dbPath + "';"
 
 block body
-    main#crowdie.crowdie
-        div.window.uk-container-large.uk-position-center
-            h1.uk-heading-divider= "Crowdie"
-            ul(uk-tab uk-switcher)
-                li.uk-active
-                    a(href="#crowproj")= "My Projects"
-                li
-                    a(href="#crowfund")= "My Fundings"
-            div.uk-switcher
-                div#crowproj
-                    ul.uk-subnav
-                        li
-                            a(href="#")= "New Project"
-                        li
-                            a(href="#")= "My Wallet"
+    main.crowdie
+        include window/crowdie
+        include window/wallet
+        include window/invest
+        include window/new
+        include window/alert
 
-                    ul(uk-accordion)
-                        div.uk-text-center.uk-placeholder
-                            | Currently you don't have any funding projects!
-                div#crowfund
-                    div.uk-grid-match(uk-grid)
-                        
-        div.window.uk-container-large.uk-position-center(style="display:none")
-            h1.uk-heading-divier= "Invest the project"
-                    
-
-    script(src="/js/background.js")
-    script(src="/js/music.js")
+    script(src="/js/media.js")
+    script(src="/js/window.js")
+    script(src="/js/dbComm.js")
+    script(src="/js/w3Comm.js")

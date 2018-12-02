@@ -1,19 +1,25 @@
 //- Crowdie error page
-extends skel
+extends layout
 
 block title
     = "Errrr!! - Crowdie"
+
+block head
+    link(rel="stylesheet", href="/css/bsod.css")
 
 block body
     main.bsod
         div#content
             div.container
                 span.title= "Crowdie"
+                
                 p
                     | A fatal exception 404 has occurred at this page. The current application will be terminated.
 
                 p
-                    | * Press any key to terminate the current application. <br>
+                    | * Press any key to terminate the current application.
+
+                br
                 div.indicator
                     span= "Press any key to continue"
                     span.blinking= "_"
