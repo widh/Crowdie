@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Simple crowdfunding platform implementation",
   "main": "index.mjs",
-  "repository": "https://github.com/yuoa/Crowdie",
-  "author": "Yuoa <contact@yuoa.pm>",
+  "repository": "https://github.com/wldh-g/Crowdie",
+  "author": "wldh <jio@wldh.org>",
   "license": "MPL-2.0",
   "private": false,
   "dependencies": {
