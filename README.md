@@ -20,7 +20,7 @@ An simple ethereum-based crowdsaling platform implementation
 ### Step-by-Step Instruction
 1. **Clone this repository**  
     ```sh
-    git clone https://github.com/yuoa/Crowdie.git
+    git clone https://github.com/wldh-g/Crowdie.git
     cd Crowdie
     ```
 2. **Install npm packages**  
